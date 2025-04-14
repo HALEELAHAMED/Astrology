@@ -1,14 +1,40 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-class ClockWidget extends StatelessWidget {
-  ClockWidget({super.key});
+class ClockWidget extends StatefulWidget {
+  const ClockWidget({super.key});
 
-  final time = DateTime.now();
+  @override
+  State<ClockWidget> createState() => _ClockWidgetState();
+}
+
+class _ClockWidgetState extends State<ClockWidget> {
+  late String formattedTime;
+  late Timer _timer;
+
+  @override
+  void initState() {
+    super.initState();
+    // Initialize the time
+    formattedTime = DateFormat('hh:mm:ss a').format(DateTime.now());
+
+    // Start a timer that updates the time every second
+    _timer = Timer.periodic(Duration(seconds: 1), (timer) {
+      setState(() {
+        formattedTime = DateFormat('hh:mm:ss a').format(DateTime.now());
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    _timer.cancel(); // Cancel the timer when the widget is disposed
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final formattedTime = DateFormat('hh:mm:ss a').format(time);
     return Container(
       width: 350,
       height: 60,
