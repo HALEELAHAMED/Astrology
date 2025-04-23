@@ -1,5 +1,4 @@
-// 
-
+import 'package:astrology/global/global_width.dart';
 import 'package:astrology/widgets/horscope_dialog.dart';
 import 'package:flutter/material.dart';
 
@@ -27,26 +26,32 @@ class _HoroscopeButtonState extends State<HoroscopeButton> {
         showPopupForm(context);
       },
       child: Container(
-        width: 280,
-        height: 60,
+        width: isWideScreen ? 320 : 280,
+        height: isWideScreen ? 80 : 60,
         decoration: BoxDecoration(
           color: Colors.deepOrange,
           borderRadius: BorderRadius.circular(5),
         ),
-        child: Row(
-          children: [
-            const SizedBox(width: 20),
-            const Icon(Icons.circle, color: Colors.white),
-            const SizedBox(width: 40),
-            const Text(
-              'Your horoscope\n      for today',
-              style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: Colors.white,
-              ),
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.only(left: 5, right: 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Image.asset('assets/Horoscope_icon.png'),
+              SizedBox(width: 15,),
+               Expanded(
+                 child: Text(
+                  'Your horoscope\n      for today',
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    fontSize: 20,
+                    color: Colors.white,
+                  ),
+                               ),
+               ),
+            ],
+          ),
         ),
       ),
     );

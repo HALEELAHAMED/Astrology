@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:astrology/global/global_width.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -36,8 +37,8 @@ class _ClockWidgetState extends State<ClockWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: 350,
-      height: 60,
+      width: isWideScreen?400: 350,
+      height: isWideScreen?80: 60,
       decoration: BoxDecoration(
         color: Colors.black,
         borderRadius: BorderRadius.only(

@@ -16,7 +16,7 @@
 //       throw Exception('Location permissions are denied');
 //     }
 //   }
-  
+
 //   if (permission == LocationPermission.deniedForever) {
 //     throw Exception('Location permissions are permanently denied');
 //   }
@@ -31,7 +31,6 @@
 
 //   print('Status: ${now}');
 
-  
 //   final response = await http.get(
 //     Uri.parse('https://api.austrology.synxup.tech/inauspicious-period?datetime=$now&coordinates=$coordinates'),
 //   );
@@ -41,7 +40,7 @@
 // print('Body: ${response.body}');
 //   if (response.statusCode == 200) {
 //     final Map<String, dynamic> responseData = json.decode(response.body);
-    
+
 //     // Extract the list from the 'data' field
 //     if (responseData.containsKey('data') && responseData['data'] is List) {
 //       return List<Map<String, dynamic>>.from(responseData['data']);
@@ -53,12 +52,11 @@
 //   }
 // });
 
-
 import 'package:astrology/statemanager/date_time.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert'; 
+import 'dart:convert';
 
 final locationProvider = FutureProvider.autoDispose<Position>((ref) async {
   bool serviceEnabled = await Geolocator.isLocationServiceEnabled();
@@ -81,8 +79,12 @@ final locationProvider = FutureProvider.autoDispose<Position>((ref) async {
   return await Geolocator.getCurrentPosition();
 });
 
-final inauspiciousPeriodsProvider = FutureProvider.autoDispose<List<Map<String, dynamic>>>((ref) async {
-  final selectedDate = ref.watch(selectedDateProvider); // 👈 Watch the selected date
+final inauspiciousPeriodsProvider = FutureProvider.autoDispose<
+  List<Map<String, dynamic>>
+>((ref) async {
+  final selectedDate = ref.watch(
+    selectedDateProvider,
+  ); // 👈 Watch the selected date
 
   // Use selected date instead of DateTime.now()
   final selectedUtcDate = selectedDate.toUtc().toIso8601String();
@@ -91,7 +93,9 @@ final inauspiciousPeriodsProvider = FutureProvider.autoDispose<List<Map<String, 
   final coordinates = '${location.latitude},${location.longitude}';
 
   final response = await http.get(
-    Uri.parse('https://api.austrology.synxup.tech/inauspicious-period?datetime=$selectedUtcDate&coordinates=$coordinates'),
+    Uri.parse(
+      'https://api.austrology.synxup.tech/inauspicious-period?datetime=$selectedUtcDate&coordinates=$coordinates',
+    ),
   );
 
   print('=== API Response ===');
@@ -108,12 +112,13 @@ final inauspiciousPeriodsProvider = FutureProvider.autoDispose<List<Map<String, 
       throw Exception('Invalid API response format - missing data array');
     }
   } else {
-    throw Exception('Failed to load inauspicious periods: ${response.statusCode}');
+    throw Exception(
+      'Failed to load inauspicious periods: ${response.statusCode}',
+    );
   }
 });
 
-
-
-
-
-
+final coordinatesProvider = Provider.autoDispose<Future<String>>((ref) async {
+  final position = await ref.watch(locationProvider.future);
+  return '${position.latitude},${position.longitude}';
+});

@@ -1,3 +1,4 @@
+import 'package:astrology/global/global_width.dart';
 import 'package:flutter/material.dart';
 
 class BottomBox extends StatelessWidget {
@@ -10,32 +11,90 @@ class BottomBox extends StatelessWidget {
   final String title;
   final Color color;
   final String time;
+  
   @override
   Widget build(BuildContext context) {
+    // Split the time string into two parts
+    final timeParts = time.split(' - ');
+    final firstTime = timeParts.isNotEmpty ? timeParts[0] : '';
+    final secondTime = timeParts.length > 1 ? timeParts[1] : '';
+    
     return Container(
-      width: 200,
-      height: 250,
+      width: isWideScreen ? 300 : 200,
+      height: isWideScreen ? 350 : 250,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(30),
       ),
       child: Column(
         children: [
+          // Title section
           Container(
-            height: 50,
+            height: isWideScreen ? 80 : 50,
             width: double.infinity,
             decoration: BoxDecoration(
               color: color,
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(30),
                 topRight: Radius.circular(30),
               ),
             ),
-            child: Center(child: Text(title,style: TextStyle(color: Colors.white,fontSize: 20,fontWeight: FontWeight.bold),),
-            )
+            child: Center(
+              child: Text(
+                title,
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: isWideScreen ? 30 : 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
           ),
-            SizedBox(height: 70,),
-          Center(child: Text(time)),
+          
+          // Time content section - centered both vertically and horizontally
+          Expanded(
+            child: Center(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  // First time
+                  if (firstTime.isNotEmpty)
+                    Text(
+                      firstTime,
+                      style: TextStyle(
+                        fontSize: isWideScreen ? 40 : 20, 
+                        fontWeight: FontWeight.bold,
+                        color: Colors.deepPurple
+                      ), 
+                    ),
+                  
+                  // "to" in the middle
+                  if (firstTime.isNotEmpty && secondTime.isNotEmpty)
+                    Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8),
+                      child: Text(
+                        'to',
+                        style: TextStyle(
+                          fontSize: isWideScreen ? 24 : 16,
+                          color: Colors.deepPurple,
+                        ),
+                      ),
+                    ),
+                  
+                  // Second time
+                  if (secondTime.isNotEmpty)
+                    Text(
+                      secondTime,
+                      style: TextStyle(
+                        fontSize: isWideScreen ? 40 : 20, 
+                        fontWeight: FontWeight.bold,
+                        color: Colors.deepPurple
+                      ), 
+                    ),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

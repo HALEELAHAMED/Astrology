@@ -1,16 +1,21 @@
+import 'package:astrology/global/global_width.dart';
 import 'package:flutter/material.dart';
 
 class LeftcalenderButton extends StatelessWidget {
-  const LeftcalenderButton({super.key, required this.date, required this.isToday, required this.isSelected, required this.onTap, });
+  const LeftcalenderButton({
+    super.key,
+    required this.date,
+    required this.isToday,
+    required this.isSelected,
+    required this.onTap,
+  });
   final String date;
   final bool isToday;
   final bool isSelected;
-  final VoidCallback onTap; 
-  
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-
     Color bgColor = Colors.white;
     if (isToday) {
       bgColor = Colors.blue; // highlight today
@@ -21,8 +26,8 @@ class LeftcalenderButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 60,
-        height: 60,
+        width: isWideScreen ? 90 : 60,
+        height: isWideScreen ? 90 : 60,
         decoration: BoxDecoration(
           color: bgColor,
           borderRadius: BorderRadius.circular(10),

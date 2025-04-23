@@ -36,9 +36,9 @@ class _HoroscopeMatchingDialogState extends State<HoroscopeMatchingDialog> {
 
   // Common lists
   final List<String> years = List.generate(
-    50,
-    (index) => '${DateTime.now().year - 25 + index}',
-  );
+  DateTime.now().year - 1900 + 1,
+  (index) => '${1900 + index}',
+);
   final List<String> dates = List.generate(31, (index) => '${index + 1}');
   final List<String> months = [
     'January',

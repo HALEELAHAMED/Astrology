@@ -1,9 +1,17 @@
 import 'package:astrology/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 void main() {
-  runApp(ProviderScope(child: const MyApp()));
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeRight,
+    DeviceOrientation.landscapeLeft,
+  ]).then((_) {
+    
+    runApp(ProviderScope(child: const MyApp()));
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -15,8 +23,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Astrology',
-      home: const HomeScreen()
+      home: const HomeScreen(),
     );
   }
 }
-

@@ -1,7 +1,8 @@
-
 import 'package:astrology/api/api_providers.dart';
+import 'package:astrology/global/global_width.dart';
 import 'package:astrology/statemanager/image_change.dart';
 import 'package:astrology/widgets/bottom_box.dart';
+import 'package:astrology/widgets/buttons/consultastroleger_button.dart';
 import 'package:astrology/widgets/buttons/horoscope_button.dart';
 import 'package:astrology/widgets/clock_widget.dart';
 import 'package:astrology/widgets/daily_astrocard.dart';
@@ -49,6 +50,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   Widget build(BuildContext context) {
     final currentImage = ref.watch(imageProvider);
     final inauspiciousPeriodsAsync = ref.watch(inauspiciousPeriodsProvider);
+    final screenWidth = MediaQuery.of(context).size.width;
+
+    isWideScreen = screenWidth > 1300;
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -85,34 +89,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               children: [
                                 const HoroscopeButton(),
                                 const Spacer(),
-                                Container(
-                                  width: 280,
-                                  height: 60,
-                                  decoration: BoxDecoration(
-                                    color: const Color.fromARGB(
-                                      255,
-                                      87,
-                                      7,
-                                      225,
-                                    ),
-                                    borderRadius: BorderRadius.circular(5),
-                                  ),
-                                  child: const Row(
-                                    children: [
-                                      SizedBox(width: 20),
-                                      Icon(Icons.circle, color: Colors.white),
-                                      SizedBox(width: 40),
-                                      Text(
-                                        'Talk to an\nAstrologer',
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 20,
-                                          color: Colors.white,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
+                                //Talk to astroleger
+                                ConsultastrolegerButton(),
                               ],
                             ),
                           ),
@@ -120,7 +98,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              const Padding(
+                              Padding(
                                 padding: EdgeInsets.only(left: 15),
                                 child: DailyAstrocard(),
                               ),
@@ -128,8 +106,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               Padding(
                                 padding: const EdgeInsets.only(right: 15),
                                 child: Container(
-                                  width: 390,
-                                  height: 300,
+                                  width: isWideScreen ? 500 : 390,
+                                  height: isWideScreen ? 400 : 300,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     color: Colors.black,

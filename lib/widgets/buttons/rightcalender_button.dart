@@ -1,3 +1,4 @@
+import 'package:astrology/global/global_width.dart';
 import 'package:flutter/material.dart';
 
 class RightcalenderButton extends StatelessWidget {
@@ -11,8 +12,8 @@ class RightcalenderButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: 70,
-        height: 70,
+        width: isWideScreen?100: 70,
+        height: isWideScreen?100: 70,
         decoration: const BoxDecoration(
           shape: BoxShape.circle,
           color: Colors.transparent,

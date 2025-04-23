@@ -965,48 +965,48 @@ class MangalDoshaCard extends StatelessWidget {
                     height:
                         isLargeTablet ? 28.0 : (isSmallTablet ? 24.0 : 20.0),
                   ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFFFF3B30),
-                      foregroundColor: Colors.white,
-                      padding: EdgeInsets.symmetric(
-                        vertical:
-                            isLargeTablet
-                                ? 18.0
-                                : (isSmallTablet ? 16.0 : 12.0),
-                        horizontal:
-                            isLargeTablet
-                                ? 36.0
-                                : (isSmallTablet ? 32.0 : 24.0),
-                      ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12.0),
-                      ),
-                      elevation: 0,
-                      minimumSize: Size(
-                        isLargeTablet ? 240.0 : (isSmallTablet ? 200.0 : 150.0),
-                        0,
-                      ),
-                    ),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        const Icon(Icons.healing, size: 20),
-                        SizedBox(width: isLargeTablet ? 12 : 8),
-                        Text(
-                          'View Remedies',
-                          style: TextStyle(
-                            fontSize:
-                                isLargeTablet
-                                    ? 18.0
-                                    : (isSmallTablet ? 16.0 : 14.0),
-                            fontWeight: FontWeight.w600,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  // ElevatedButton(
+                  //   onPressed: () {},
+                  //   style: ElevatedButton.styleFrom(
+                  //     backgroundColor: const Color(0xFFFF3B30),
+                  //     foregroundColor: Colors.white,
+                  //     padding: EdgeInsets.symmetric(
+                  //       vertical:
+                  //           isLargeTablet
+                  //               ? 18.0
+                  //               : (isSmallTablet ? 16.0 : 12.0),
+                  //       horizontal:
+                  //           isLargeTablet
+                  //               ? 36.0
+                  //               : (isSmallTablet ? 32.0 : 24.0),
+                  //     ),
+                  //     shape: RoundedRectangleBorder(
+                  //       borderRadius: BorderRadius.circular(12.0),
+                  //     ),
+                  //     elevation: 0,
+                  //     minimumSize: Size(
+                  //       isLargeTablet ? 240.0 : (isSmallTablet ? 200.0 : 150.0),
+                  //       0,
+                  //     ),
+                  //   ),
+                  //   child: Row(
+                  //     mainAxisSize: MainAxisSize.min,
+                  //     children: [
+                  //       const Icon(Icons.healing, size: 20),
+                  //       SizedBox(width: isLargeTablet ? 12 : 8),
+                  //       Text(
+                  //         'View Remedies',
+                  //         style: TextStyle(
+                  //           fontSize:
+                  //               isLargeTablet
+                  //                   ? 18.0
+                  //                   : (isSmallTablet ? 16.0 : 14.0),
+                  //           fontWeight: FontWeight.w600,
+                  //         ),
+                  //       ),
+                  //     ],
+                  //   ),
+                  // ),
                 ],
               ],
             ),
@@ -1173,38 +1173,21 @@ class YogaDetailsCard extends StatelessWidget {
                 SizedBox(
                   height: isLargeTablet ? 20.0 : (isSmallTablet ? 16.0 : 12.0),
                 ),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF5856D6),
-                    foregroundColor: Colors.white,
-                    padding: EdgeInsets.symmetric(
-                      vertical:
-                          isLargeTablet ? 18.0 : (isSmallTablet ? 16.0 : 12.0),
-                    ),
-                    minimumSize: const Size(double.infinity, 50),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12.0),
-                    ),
-                    elevation: 0,
+                Container(
+                  width: double.infinity,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    color: const Color(0xFF5856D6),
+                    borderRadius: BorderRadius.circular(12.0),
                   ),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Icons.visibility, size: isLargeTablet ? 24 : 20),
-                      SizedBox(width: isLargeTablet ? 12 : 8),
-                      Text(
-                        'See Full Yoga Analysis',
-                        style: TextStyle(
-                          fontSize:
-                              isLargeTablet
-                                  ? 18.0
-                                  : (isSmallTablet ? 16.0 : 14.0),
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                    ],
+                  padding: EdgeInsets.symmetric(
+                    vertical:
+                        isLargeTablet ? 18.0 : (isSmallTablet ? 16.0 : 12.0),
                   ),
+                  child: Row(mainAxisSize: MainAxisSize.min, children: [
+     
+    ],
+  ),
                 ),
               ],
             ),
@@ -1227,219 +1210,236 @@ class AdditionalInfoCard extends StatelessWidget {
     required this.isLargeTablet,
   }) : super(key: key);
 
-
   IconData _getIconForKey(String key) {
-  switch (key.toLowerCase()) {
-    case 'deity': return Icons.ac_unit;
-    case 'ganam': return Icons.people_alt_outlined;
-    case 'symbol': return Icons.emoji_symbols;
-    case 'animal_sign': return Icons.pets;
-    case 'nadi': return Icons.waves;
-    case 'color': return Icons.color_lens;
-    case 'best_direction': return Icons.explore;
-    case 'syllables': return Icons.text_fields;
-    case 'birth_stone': return Icons.diamond;
-    case 'gender': return Icons.wc;
-    case 'planet': return Icons.public;
-    case 'enemy_yoni': return Icons.dangerous;
-    default: return Icons.star;
+    switch (key.toLowerCase()) {
+      case 'deity':
+        return Icons.ac_unit;
+      case 'ganam':
+        return Icons.people_alt_outlined;
+      case 'symbol':
+        return Icons.emoji_symbols;
+      case 'animal_sign':
+        return Icons.pets;
+      case 'nadi':
+        return Icons.waves;
+      case 'color':
+        return Icons.color_lens;
+      case 'best_direction':
+        return Icons.explore;
+      case 'syllables':
+        return Icons.text_fields;
+      case 'birth_stone':
+        return Icons.diamond;
+      case 'gender':
+        return Icons.wc;
+      case 'planet':
+        return Icons.public;
+      case 'enemy_yoni':
+        return Icons.dangerous;
+      default:
+        return Icons.star;
+    }
   }
-}
 
-Widget _buildInfoItem(MapEntry<String, dynamic> entry, BuildContext context) {
-  return Container(
-    margin: EdgeInsets.all(isLargeTablet ? 4.0 : 2.0),
-    decoration: BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.circular(10.0),
-      boxShadow: [
-        BoxShadow(
-          color: const Color(0xFFFF9500).withOpacity(0.1),
-          blurRadius: 4,
-          offset: const Offset(0, 2),
-        ),
-      ],
-    ),
-    child: Padding(
-      padding: EdgeInsets.all(isLargeTablet ? 8.0 : 6.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Container(
-            width: isLargeTablet ? 32.0 : 28.0,
-            height: isLargeTablet ? 32.0 : 28.0,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: const Color(0xFFFFF0E0),
-            ),
-            child: Icon(
-              _getIconForKey(entry.key),
-              size: isLargeTablet ? 16.0 : 14.0,
-              color: const Color(0xFFFF9500),
-            ),
-          ),
-          SizedBox(width: isLargeTablet ? 8 : 6),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  entry.key
-                      .replaceFirst(entry.key[0], entry.key[0].toUpperCase())
-                      .replaceAll('_', ' '),
-                  style: TextStyle(
-                    fontSize: isLargeTablet ? 11.0 : 10.0,
-                    color: Colors.black54,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-                SizedBox(height: 2),
-                Text(
-                  entry.value.toString(),
-                  style: TextStyle(
-                    fontSize: isLargeTablet ? 13.0 : 12.0,
-                    fontWeight: FontWeight.w600,
-                    color: const Color(0xFF333333),
-                  ),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
-              ],
-            ),
+  Widget _buildInfoItem(MapEntry<String, dynamic> entry, BuildContext context) {
+    return Container(
+      margin: EdgeInsets.all(isLargeTablet ? 4.0 : 2.0),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(10.0),
+        boxShadow: [
+          BoxShadow(
+            color: const Color(0xFFFF9500).withOpacity(0.1),
+            blurRadius: 4,
+            offset: const Offset(0, 2),
           ),
         ],
       ),
-    ),
-  );
-}
+      child: Padding(
+        padding: EdgeInsets.all(isLargeTablet ? 8.0 : 6.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              width: isLargeTablet ? 32.0 : 28.0,
+              height: isLargeTablet ? 32.0 : 28.0,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: const Color(0xFFFFF0E0),
+              ),
+              child: Icon(
+                _getIconForKey(entry.key),
+                size: isLargeTablet ? 16.0 : 14.0,
+                color: const Color(0xFFFF9500),
+              ),
+            ),
+            SizedBox(width: isLargeTablet ? 8 : 6),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    entry.key
+                        .replaceFirst(entry.key[0], entry.key[0].toUpperCase())
+                        .replaceAll('_', ' '),
+                    style: TextStyle(
+                      fontSize: isLargeTablet ? 11.0 : 10.0,
+                      color: Colors.black54,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  SizedBox(height: 2),
+                  Text(
+                    entry.value.toString(),
+                    style: TextStyle(
+                      fontSize: isLargeTablet ? 13.0 : 12.0,
+                      fontWeight: FontWeight.w600,
+                      color: const Color(0xFF333333),
+                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     // Create paired items for the grid
     final List<MapEntry<String, dynamic>> infoEntries = info.entries.toList();
 
-   return Card(
-  elevation: 0,
-  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.0)),
-  clipBehavior: Clip.antiAlias,
-  child: Column(
-    crossAxisAlignment: CrossAxisAlignment.stretch,
-    children: [
-      // Card Header
-      Container(
-        padding: EdgeInsets.symmetric(
-          vertical: isLargeTablet ? 20.0 : (isSmallTablet ? 18.0 : 14.0),
-          horizontal: isLargeTablet ? 24.0 : (isSmallTablet ? 20.0 : 16.0),
-        ),
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            colors: [Color(0xFFFF9500), Color(0xFFFF5E3A)],
-          ),
-        ),
-        child: Row(
-          children: [
-            Icon(
-              Icons.info_outline,
-              color: Colors.white,
-              size: isLargeTablet ? 22 : 18,
+    return Card(
+      elevation: 0,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24.0)),
+      clipBehavior: Clip.antiAlias,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          // Card Header
+          Container(
+            padding: EdgeInsets.symmetric(
+              vertical: isLargeTablet ? 20.0 : (isSmallTablet ? 18.0 : 14.0),
+              horizontal: isLargeTablet ? 24.0 : (isSmallTablet ? 20.0 : 16.0),
             ),
-            SizedBox(width: isLargeTablet ? 12 : 8),
-            Flexible(
-              child: Text(
-                'Additional Information',
-                style: TextStyle(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [Color(0xFFFF9500), Color(0xFFFF5E3A)],
+              ),
+            ),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.info_outline,
                   color: Colors.white,
-                  fontSize: isLargeTablet ? 18.0 : (isSmallTablet ? 16.0 : 14.0),
-                  fontWeight: FontWeight.bold,
+                  size: isLargeTablet ? 22 : 18,
                 ),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ),
-          ],
-        ),
-      ),
-
-      // Card Content
-      Padding(
-        padding: EdgeInsets.all(isLargeTablet ? 16.0 : (isSmallTablet ? 12.0 : 8.0)),
-        child: Column(
-          children: [
-            // Grid View with dynamic sizing
-            LayoutBuilder(
-              builder: (context, constraints) {
-                final double availableWidth = constraints.maxWidth;
-                final int crossAxisCount = availableWidth > 700 
-                  ? 4 
-                  : availableWidth > 500 
-                    ? 3 
-                    : 2;
-                
-                final double childAspectRatio = availableWidth > 700 
-                  ? 2.2 
-                  : availableWidth > 500 
-                    ? 1.8 
-                    : 1.5;
-
-                return GridView.builder(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: crossAxisCount,
-                    crossAxisSpacing: isLargeTablet ? 12.0 : 8.0,
-                    mainAxisSpacing: isLargeTablet ? 12.0 : 8.0,
-                    childAspectRatio: childAspectRatio,
-                  ),
-                  itemCount: infoEntries.length,
-                  itemBuilder: (context, index) {
-                    final entry = infoEntries[index];
-                    return _buildInfoItem(entry, context);
-                  },
-                );
-              },
-            ),
-            
-            // Download Button
-            Padding(
-              padding: EdgeInsets.only(top: isLargeTablet ? 16.0 : 12.0),
-              child: SizedBox(
-                width: double.infinity,
-                child: TextButton.icon(
-                  onPressed: () {},
-                  icon: Icon(
-                    Icons.download_rounded,
-                    size: isLargeTablet ? 18 : 16,
-                  ),
-                  label: Text(
-                    'Download Report',
+                SizedBox(width: isLargeTablet ? 12 : 8),
+                Flexible(
+                  child: Text(
+                    'Additional Information',
                     style: TextStyle(
-                      fontSize: isLargeTablet ? 15.0 : 13.0,
+                      color: Colors.white,
+                      fontSize:
+                          isLargeTablet ? 18.0 : (isSmallTablet ? 16.0 : 14.0),
+                      fontWeight: FontWeight.bold,
                     ),
-                  ),
-                  style: TextButton.styleFrom(
-                    foregroundColor: const Color(0xFFFF9500),
-                    padding: EdgeInsets.symmetric(
-                      vertical: isLargeTablet ? 12.0 : 10.0,
-                      horizontal: 16.0,
-                    ),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(8.0),
-                      side: const BorderSide(color: Color(0xFFFF9500)),
-                    ),
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                   ),
                 ),
-              ),
+              ],
             ),
-          ],
-        ),
+          ),
+
+          // Card Content
+          Padding(
+            padding: EdgeInsets.all(
+              isLargeTablet ? 16.0 : (isSmallTablet ? 12.0 : 8.0),
+            ),
+            child: Column(
+              children: [
+                // Grid View with dynamic sizing
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    final double availableWidth = constraints.maxWidth;
+                    final int crossAxisCount =
+                        availableWidth > 700
+                            ? 4
+                            : availableWidth > 500
+                            ? 3
+                            : 2;
+
+                    final double childAspectRatio =
+                        availableWidth > 700
+                            ? 2.2
+                            : availableWidth > 500
+                            ? 1.8
+                            : 1.5;
+
+                    return GridView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: crossAxisCount,
+                        crossAxisSpacing: isLargeTablet ? 12.0 : 8.0,
+                        mainAxisSpacing: isLargeTablet ? 12.0 : 8.0,
+                        childAspectRatio: childAspectRatio,
+                      ),
+                      itemCount: infoEntries.length,
+                      itemBuilder: (context, index) {
+                        final entry = infoEntries[index];
+                        return _buildInfoItem(entry, context);
+                      },
+                    );
+                  },
+                ),
+
+                // Download Button
+                // Padding(
+                //   padding: EdgeInsets.only(top: isLargeTablet ? 16.0 : 12.0),
+                //   child: SizedBox(
+                //     width: double.infinity,
+                //     child: TextButton.icon(
+                //       onPressed: () {},
+                //       icon: Icon(
+                //         Icons.download_rounded,
+                //         size: isLargeTablet ? 18 : 16,
+                //       ),
+                //       label: Text(
+                //         'Download Report',
+                //         style: TextStyle(
+                //           fontSize: isLargeTablet ? 15.0 : 13.0,
+                //         ),
+                //       ),
+                //       style: TextButton.styleFrom(
+                //         foregroundColor: const Color(0xFFFF9500),
+                //         padding: EdgeInsets.symmetric(
+                //           vertical: isLargeTablet ? 12.0 : 10.0,
+                //           horizontal: 16.0,
+                //         ),
+                //         shape: RoundedRectangleBorder(
+                //           borderRadius: BorderRadius.circular(8.0),
+                //           side: const BorderSide(color: Color(0xFFFF9500)),
+                //         ),
+                //       ),
+                //     ),
+                //   ),
+                // ),
+              ],
+            ),
+          ),
+        ],
       ),
-    ],
-  ),
-);
+    );
   }
 }

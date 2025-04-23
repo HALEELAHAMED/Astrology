@@ -1,3 +1,4 @@
+import 'package:astrology/global/global_width.dart';
 import 'package:astrology/statemanager/date_time.dart';
 import 'package:astrology/statemanager/image_change.dart';
 import 'package:astrology/widgets/buttons/leftcalender_button.dart';
@@ -68,8 +69,8 @@ class _LeftBarState extends ConsumerState<LeftBar> {
     final picked = await showDatePicker(
       context: context,
       initialDate: now,
-      firstDate: now,
-      lastDate: DateTime(now.year + 3),
+      firstDate: DateTime(now.year-1),
+      lastDate: DateTime(now.year + 2),
     );
 
     if (picked != null) {
@@ -87,8 +88,8 @@ class _LeftBarState extends ConsumerState<LeftBar> {
     return GestureDetector(
       onTap: openDatePicker,
       child: Container(
-        width: 80,
-        height: 100,
+        width: isWideScreen?120: 80,
+        height: isWideScreen?140: 100,
         color: const Color.fromARGB(255, 179, 5, 195),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -106,7 +107,7 @@ class _LeftBarState extends ConsumerState<LeftBar> {
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10),
         child: Container(
-          width: 80,
+          width: isWideScreen?120: 80,
           color: Colors.black,
           child: SingleChildScrollView(
             controller: _scrollController,
@@ -134,8 +135,8 @@ class _LeftBarState extends ConsumerState<LeftBar> {
         _scrollToDay(today.day);
       },
       child: Container(
-        width: 80,
-        height: 100,
+        width: isWideScreen?120: 80,
+        height: isWideScreen?140: 100,
         color: const Color.fromARGB(255, 179, 5, 195),
         child: const Center(
           child: Text(
@@ -152,7 +153,7 @@ class _LeftBarState extends ConsumerState<LeftBar> {
     final selectedDate = ref.watch(selectedDateProvider);
 
     return Container(
-      width: 80,
+      width: isWideScreen?120: 80,
       height: MediaQuery.of(context).size.height,
       color: Colors.black,
       child: Column(
