@@ -26,8 +26,8 @@ class _HoroscopeButtonState extends State<HoroscopeButton> {
         showPopupForm(context);
       },
       child: Container(
-        width: isWideScreen ? 320 : 280,
-        height: isWideScreen ? 80 : 60,
+        width: 220,
+        height: 50,
         decoration: BoxDecoration(
           color: Colors.deepOrange,
           borderRadius: BorderRadius.circular(5),
@@ -45,7 +45,7 @@ class _HoroscopeButtonState extends State<HoroscopeButton> {
                   'Your horoscope\n      for today',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 20,
+                    fontSize: 15,
                     color: Colors.white,
                   ),
                                ),

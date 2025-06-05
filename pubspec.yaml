@@ -110,18 +110,18 @@ flutter:
     - assets/image-29.jpg
     - assets/image-30.jpg
     - assets/image-31.jpg
-    - assets/icons/image-1.png
-    - assets/icons/image-2.png
-    - assets/icons/image-3.png
-    - assets/icons/image-4.png
-    - assets/icons/image-5.png
-    - assets/icons/image-6.png
-    - assets/icons/image-7.png
-    - assets/icons/image-8.png
-    - assets/icons/image-9.png
-    - assets/icons/image-10.png
-    - assets/icons/image-11.png
-    - assets/icons/image-12.png
+    - assets/icons/aries.png
+    - assets/icons/taurus.png
+    - assets/icons/gemini.png
+    - assets/icons/cancer.png
+    - assets/icons/leo.png
+    - assets/icons/virgo.png
+    - assets/icons/libra.png
+    - assets/icons/scorpio.png
+    - assets/icons/sagittarius.png
+    - assets/icons/capricorn.png
+    - assets/icons/aquarius.png
+    - assets/icons/pisces.png
     - assets/app_icon.png
     - assets/Horoscope_icon.png
     - assets/sohan_samay.png
@@ -129,6 +129,13 @@ flutter:
     - assets/white_sun.png
     - assets/blue_sun.png
     - assets/calender.png
+    - assets/ganesh.jpg
+    - assets/hanuman.jpg
+    - assets/laxmidevi.jpg
+    - assets/saibaba.jpg
+    - assets/shiva.jpg
+    - assets/suryabhagavan.jpg
+    - assets/venkateshwara.jpg
   
 
   # An image asset can refer to one or more resolution-specific "variants", see

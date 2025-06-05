@@ -112,7 +112,7 @@ class AstrologerConsultationDialog extends StatelessWidget {
                               ),
                               SizedBox(height: 5),
                               Text(
-                                'Get guidance on career, relationships, finance & more',
+                                'Get guidance on career & more',
                                 style: TextStyle(
                                   fontSize: 12,
                                   color: Colors.black87,

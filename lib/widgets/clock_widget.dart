@@ -37,8 +37,8 @@ class _ClockWidgetState extends State<ClockWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: isWideScreen?400: 350,
-      height: isWideScreen?80: 60,
+      width: 300,
+      height: 50,
       decoration: BoxDecoration(
         color: Colors.black,
         borderRadius: BorderRadius.only(

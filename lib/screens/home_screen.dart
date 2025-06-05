@@ -20,7 +20,6 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
-  // Map of colors for each period type
   final Map<String, Color> periodColors = {
     'Rahu': Colors.pink,
     'Yamaganda': Colors.red,
@@ -29,7 +28,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     'Varjyam': Colors.deepPurple,
   };
 
-  // Function to parse time from ISO format to a more readable format
   String _formatTime(String isoTime) {
     try {
       final dateTime = DateTime.parse(isoTime).toLocal();
@@ -39,7 +37,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     }
   }
 
-  // Function to get the first period's time range
   String _getTimeRange(List<dynamic> periods) {
     if (periods.isEmpty) return 'N/A';
     final firstPeriod = periods.first;
@@ -48,11 +45,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    ScreenSize.init(context);
     final currentImage = ref.watch(imageProvider);
     final inauspiciousPeriodsAsync = ref.watch(inauspiciousPeriodsProvider);
-    final screenWidth = MediaQuery.of(context).size.width;
-
-    isWideScreen = screenWidth > 1300;
 
     return Scaffold(
       resizeToAvoidBottomInset: true,
@@ -60,9 +55,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         padding: const EdgeInsets.only(top: 20),
         child: Row(
           children: [
-            // Left Bar
             const LeftBar(),
-            // Middle Screen
             Expanded(
               child: Container(
                 height: double.infinity,
@@ -74,49 +67,56 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         fit: BoxFit.cover,
                       ),
                     ),
-                    Align(alignment: Alignment.topCenter, child: ClockWidget()),
                     SingleChildScrollView(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
+                          const SizedBox(height: 10),
                           Padding(
-                            padding: const EdgeInsets.only(
-                              left: 20,
-                              top: 20,
-                              right: 20,
-                            ),
+                            padding: const EdgeInsets.symmetric(horizontal: 20),
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 const HoroscopeButton(),
-                                const Spacer(),
-                                //Talk to astroleger
+                                Expanded(
+                                  child: Center(
+                                    child: ClockWidget(),
+                                  ),
+                                ),
                                 ConsultastrolegerButton(),
                               ],
                             ),
                           ),
                           const SizedBox(height: 20),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Padding(
-                                padding: EdgeInsets.only(left: 15),
-                                child: DailyAstrocard(),
+                              Expanded(
+                                flex: 2,  // Giving it more space to expand
+                                child: Padding(
+                                  padding: const EdgeInsets.only(left: 15),
+                                  child: DailyAstrocard(),
+                                ),
                               ),
                               const SizedBox(width: 20),
-                              Padding(
-                                padding: const EdgeInsets.only(right: 15),
-                                child: Container(
-                                  width: isWideScreen ? 500 : 390,
-                                  height: isWideScreen ? 400 : 300,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: Colors.black,
-                                  ),
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(20),
-                                    child: Image.asset(
-                                      currentImage,
-                                      fit: BoxFit.cover,
+                              Expanded(
+                                flex: 1,  // Less space for the image container
+                                child: Padding(
+                                  padding: const EdgeInsets.only(right: 15),
+                                  child: Container(
+                                    width: MediaQuery.of(context).size.width * 0.40, // Adjusted width
+                                    height: ScreenSize.height * 0.41,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: Colors.black,
+                                    ),
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(20),
+                                      child: Image.asset(
+                                        currentImage,
+                                        fit: BoxFit.cover,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -124,34 +124,28 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             ],
                           ),
                           const SizedBox(height: 20),
-                          // Handle the async data
                           inauspiciousPeriodsAsync.when(
-                            loading:
-                                () => const Padding(
-                                  padding: EdgeInsets.symmetric(vertical: 20),
-                                  child: CircularProgressIndicator(),
-                                ),
-                            error:
-                                (error, stack) => Column(
-                                  children: [
-                                    Padding(
-                                      padding: const EdgeInsets.all(16.0),
-                                      child: Text(
-                                        'Error: $error',
-                                        style: const TextStyle(
-                                          color: Colors.red,
-                                        ),
-                                      ),
+                            loading: () => const Padding(
+                              padding: EdgeInsets.symmetric(vertical: 20),
+                              child: CircularProgressIndicator(),
+                            ),
+                            error: (error, stack) => Column(
+                              children: [
+                                Padding(
+                                  padding: const EdgeInsets.all(16.0),
+                                  child: Text(
+                                    'Error: $error',
+                                    style: const TextStyle(
+                                      color: Colors.red,
                                     ),
-                                    ElevatedButton(
-                                      onPressed:
-                                          () => ref.refresh(
-                                            inauspiciousPeriodsProvider,
-                                          ),
-                                      child: const Text('Retry'),
-                                    ),
-                                  ],
+                                  ),
                                 ),
+                                ElevatedButton(
+                                  onPressed: () => ref.refresh(inauspiciousPeriodsProvider),
+                                  child: const Text('Retry'),
+                                ),
+                              ],
+                            ),
                             data: (periods) {
                               if (periods.isEmpty) {
                                 return const Padding(
@@ -162,29 +156,22 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               return SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children:
-                                      periods.map((period) {
-                                        return Padding(
-                                          padding: const EdgeInsets.symmetric(
-                                            horizontal: 8.0,
-                                          ),
-                                          child: BottomBox(
-                                            color:
-                                                periodColors[period['name']] ??
-                                                Colors.grey,
-                                            title: period['name'],
-                                            time: _getTimeRange(
-                                              period['period'],
-                                            ),
-                                          ),
-                                        );
-                                      }).toList(),
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                  children: periods.map((period) {
+                                    return Padding(
+                                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                      child: BottomBox(
+                                        color: periodColors[period['name']] ?? Colors.grey,
+                                        title: period['name'],
+                                        time: _getTimeRange(period['period']),
+                                      ),
+                                    );
+                                  }).toList(),
                                 ),
                               );
                             },
                           ),
+                          SizedBox(height: 80,),
                         ],
                       ),
                     ),
@@ -200,7 +187,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ),
               ),
             ),
-            // Right side bar
             const RigthBar(),
           ],
         ),

@@ -965,48 +965,6 @@ class MangalDoshaCard extends StatelessWidget {
                     height:
                         isLargeTablet ? 28.0 : (isSmallTablet ? 24.0 : 20.0),
                   ),
-                  // ElevatedButton(
-                  //   onPressed: () {},
-                  //   style: ElevatedButton.styleFrom(
-                  //     backgroundColor: const Color(0xFFFF3B30),
-                  //     foregroundColor: Colors.white,
-                  //     padding: EdgeInsets.symmetric(
-                  //       vertical:
-                  //           isLargeTablet
-                  //               ? 18.0
-                  //               : (isSmallTablet ? 16.0 : 12.0),
-                  //       horizontal:
-                  //           isLargeTablet
-                  //               ? 36.0
-                  //               : (isSmallTablet ? 32.0 : 24.0),
-                  //     ),
-                  //     shape: RoundedRectangleBorder(
-                  //       borderRadius: BorderRadius.circular(12.0),
-                  //     ),
-                  //     elevation: 0,
-                  //     minimumSize: Size(
-                  //       isLargeTablet ? 240.0 : (isSmallTablet ? 200.0 : 150.0),
-                  //       0,
-                  //     ),
-                  //   ),
-                  //   child: Row(
-                  //     mainAxisSize: MainAxisSize.min,
-                  //     children: [
-                  //       const Icon(Icons.healing, size: 20),
-                  //       SizedBox(width: isLargeTablet ? 12 : 8),
-                  //       Text(
-                  //         'View Remedies',
-                  //         style: TextStyle(
-                  //           fontSize:
-                  //               isLargeTablet
-                  //                   ? 18.0
-                  //                   : (isSmallTablet ? 16.0 : 14.0),
-                  //           fontWeight: FontWeight.w600,
-                  //         ),
-                  //       ),
-                  //     ],
-                  //   ),
-                  // ),
                 ],
               ],
             ),
@@ -1403,38 +1361,6 @@ class AdditionalInfoCard extends StatelessWidget {
                     );
                   },
                 ),
-
-                // Download Button
-                // Padding(
-                //   padding: EdgeInsets.only(top: isLargeTablet ? 16.0 : 12.0),
-                //   child: SizedBox(
-                //     width: double.infinity,
-                //     child: TextButton.icon(
-                //       onPressed: () {},
-                //       icon: Icon(
-                //         Icons.download_rounded,
-                //         size: isLargeTablet ? 18 : 16,
-                //       ),
-                //       label: Text(
-                //         'Download Report',
-                //         style: TextStyle(
-                //           fontSize: isLargeTablet ? 15.0 : 13.0,
-                //         ),
-                //       ),
-                //       style: TextButton.styleFrom(
-                //         foregroundColor: const Color(0xFFFF9500),
-                //         padding: EdgeInsets.symmetric(
-                //           vertical: isLargeTablet ? 12.0 : 10.0,
-                //           horizontal: 16.0,
-                //         ),
-                //         shape: RoundedRectangleBorder(
-                //           borderRadius: BorderRadius.circular(8.0),
-                //           side: const BorderSide(color: Color(0xFFFF9500)),
-                //         ),
-                //       ),
-                //     ),
-                //   ),
-                // ),
               ],
             ),
           ),

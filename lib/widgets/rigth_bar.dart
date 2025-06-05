@@ -535,13 +535,11 @@ class RigthBar extends ConsumerWidget {
   const RigthBar({super.key});
 
   // Function to fetch horoscope data
-  Future<Map<String, dynamic>> fetchHoroscope(String sign,selectedDate) async {
+  Future<Map<String, dynamic>> fetchHoroscope(String sign, selectedDate) async {
     final date = DateTime.now().toString().split(' ')[0];
    
-
     final url = Uri.parse('https://api.austrology.synxup.tech/daily-horoscope?datetime=$date&sign=$sign&type=general');
     try {
-      
       final response = await http.get(url);
     
       if (response.statusCode == 200) {
@@ -634,7 +632,7 @@ class RigthBar extends ConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     final selectedDate = ref.watch(selectedDateProvider);
     final zodiacSigns = [
       'aries', 'taurus', 'gemini', 'cancer', 
@@ -642,20 +640,18 @@ class RigthBar extends ConsumerWidget {
       'sagittarius', 'capricorn', 'aquarius', 'pisces'
     ];
 
-    List<String> imagePaths = List.generate(
-      12,
-      (index) => 'assets/icons/image-${index + 1}.png',
-    );
+    // Updated to use zodiac sign names directly for image paths
+    List<String> imagePaths = zodiacSigns.map((sign) => 'assets/icons/$sign.png').toList();
 
     return Container(
       height: MediaQuery.of(context).size.height,
-      width: isWideScreen ? 120 : 80,
+      width: 80,
       color: Colors.black,
       child: Column(
         children: [
           Container(
-            width: isWideScreen ? 120 : 80,
-            height: isWideScreen ? 140 : 120,
+            width: 80,
+            height: 120,
             color: const Color.fromARGB(255, 179, 5, 195),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -663,7 +659,7 @@ class RigthBar extends ConsumerWidget {
                 Text(
                   '${selectedDate.year}',
                   style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 24,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
@@ -671,7 +667,7 @@ class RigthBar extends ConsumerWidget {
                 Text(
                   'Rashi\nPhala',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 12,
                     color: Colors.white,
                     fontWeight: FontWeight.bold,
                   ),
@@ -687,10 +683,10 @@ class RigthBar extends ConsumerWidget {
                     spacing: 10,
                     runSpacing: 10,
                     children: List.generate(imagePaths.length, (index) {
+                      final sign = zodiacSigns[index];
                       return RightcalenderButton(
                         imagePath: imagePaths[index],
                         onTap: () async {
-                          final sign = zodiacSigns[index];
                           try {
                             // Show loading dialog
                             showDialog(
@@ -733,13 +729,13 @@ class RigthBar extends ConsumerWidget {
                             );
 
                             // Fetch data
-                            final horoscopeData = await fetchHoroscope(sign,selectedDate);
+                            final horoscopeData = await fetchHoroscope(sign, selectedDate);
                             
                             // Close loading dialog
                             Navigator.of(context).pop();
                             
                             // Get date
-                           final String formattedDate = "${selectedDate.day} ${_getMonth(selectedDate.month)}, ${selectedDate.year}";
+                            final String formattedDate = "${selectedDate.day} ${_getMonth(selectedDate.month)}, ${selectedDate.year}";
                             
                             // Get element
                             final String element = getZodiacElement(sign);

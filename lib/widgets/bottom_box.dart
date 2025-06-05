@@ -12,16 +12,21 @@ class BottomBox extends StatelessWidget {
   final Color color;
   final String time;
   
+  
   @override
   Widget build(BuildContext context) {
+    double scaleFactor = ScreenSize.width / 1200; // 1200 is a base tablet width
+
+double dynamicWidth = 190 * scaleFactor;
+double dynamicHeight = 250 * scaleFactor;
     // Split the time string into two parts
     final timeParts = time.split(' - ');
     final firstTime = timeParts.isNotEmpty ? timeParts[0] : '';
     final secondTime = timeParts.length > 1 ? timeParts[1] : '';
     
     return Container(
-      width: isWideScreen ? 300 : 200,
-      height: isWideScreen ? 350 : 250,
+      width: dynamicWidth,
+      height: dynamicHeight,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(30),
@@ -30,7 +35,7 @@ class BottomBox extends StatelessWidget {
         children: [
           // Title section
           Container(
-            height: isWideScreen ? 80 : 50,
+            height: 50,
             width: double.infinity,
             decoration: BoxDecoration(
               color: color,
@@ -44,7 +49,7 @@ class BottomBox extends StatelessWidget {
                 title,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: isWideScreen ? 30 : 20,
+                   fontSize: 20 * scaleFactor,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -62,7 +67,7 @@ class BottomBox extends StatelessWidget {
                     Text(
                       firstTime,
                       style: TextStyle(
-                        fontSize: isWideScreen ? 40 : 20, 
+                        fontSize: 20 * scaleFactor,
                         fontWeight: FontWeight.bold,
                         color: Colors.deepPurple
                       ), 
@@ -75,7 +80,7 @@ class BottomBox extends StatelessWidget {
                       child: Text(
                         'to',
                         style: TextStyle(
-                          fontSize: isWideScreen ? 24 : 16,
+                          fontSize: 16 * scaleFactor,
                           color: Colors.deepPurple,
                         ),
                       ),
@@ -86,7 +91,7 @@ class BottomBox extends StatelessWidget {
                     Text(
                       secondTime,
                       style: TextStyle(
-                        fontSize: isWideScreen ? 40 : 20, 
+                         fontSize: 20 * scaleFactor,
                         fontWeight: FontWeight.bold,
                         color: Colors.deepPurple
                       ), 

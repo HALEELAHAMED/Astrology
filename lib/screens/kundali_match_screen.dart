@@ -88,29 +88,6 @@ class MatchResultScreen extends StatelessWidget {
               message: message['description'] ?? '',
             ),
             SizedBox(height: isLargeTablet ? 40.0 : 30.0),
-            // Center(
-            //   child: ElevatedButton(
-            //     onPressed: () {},
-            //     style: ElevatedButton.styleFrom(
-            //       foregroundColor: Colors.white,
-            //       backgroundColor: const Color(0xFF6C4AB6),
-            //       padding: EdgeInsets.symmetric(
-            //         horizontal: isLargeTablet ? 48.0 : 32.0,
-            //         vertical: isLargeTablet ? 20.0 : 16.0,
-            //       ),
-            //       shape: RoundedRectangleBorder(
-            //         borderRadius: BorderRadius.circular(30),
-            //       ),
-            //     ),
-            //     child: Text(
-            //       'Share Results',
-            //       style: TextStyle(
-            //         fontSize: isLargeTablet ? 18.0 : 16.0,
-            //         fontWeight: FontWeight.w600,
-            //       ),
-            //     ),
-            //   ),
-            // ),
             SizedBox(height: isLargeTablet ? 48.0 : 40.0),
           ],
         ),
